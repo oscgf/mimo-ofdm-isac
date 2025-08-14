@@ -3,20 +3,18 @@ function run_isac_simulation(params)
     rng('default');
 
     %% 1. System Parameters
-    [systemParams, transmitter, receiver, antennas, arrays] = configureSystem(params);
+    config = configureSystem(params);
 
     %% 2. Escenario ISAC
-    [scenario, channel] = configureScenario(systemParams, arrays);
+    config = configureScenario(config);
 
     %% 3. Configuración OFDM y estimación de canal (initial channel sounding)
-    ofdm = configureOFDM(systemParams, antennas, scenario);
-    [~, precoding] = initialChannelEstimation(systemParams, transmitter, receiver, antennas, arrays, scenario, channel, ofdm);
+    config = configureOFDM(config);
+    config = initialChannelEstimation(config);
 
     %% 4. Transmisión de tramas OFDM y evaluación de BER
-    profile on
-    [radarDataCube] = transmitDataFrames(systemParams, transmitter, receiver, antennas, scenario, channel, ofdm, precoding);
-    profile viewer
+    radarDataCube = transmitDataFrames(config);
     
     %% 5. Procesado radar y métricas de sensado.
-    processRadarData(radarDataCube, systemParams, scenario, arrays, ofdm);
+    processRadarData(config, radarDataCube);
 end

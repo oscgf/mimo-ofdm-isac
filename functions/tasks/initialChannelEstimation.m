@@ -1,30 +1,41 @@
 %% Subfunción: estimación inicial del canal y pesos de precodificación
-function [channelMatrix, precoding] = initialChannelEstimation(systemParams, transmitter, receiver, antennas, arrays, scenario, channel, ofdm)
+function config = initialChannelEstimation(config)
     % This function performs the initial channel estimation and precoding for the ISAC system.  
-    
-    Ntx = antennas.Ntx; % Number of transmit antennas
-    Nrx = antennas.Nrx; % Number of receive antennas
-    Nsub = ofdm.Nsub; % Total number of subcarriers
+
+    % Extract from config
+    systemParams = config.systemParams;
+    elements     = config.elements;
+    scenario     = config.scenario;
+    ofdm         = config.ofdm;
+
+    transmitter = elements.transmitter;
+    receiver    = elements.receiver;
+    channel     = elements.channel;
+
+    Ntx  = systemParams.Ntx;    % Number of transmit systemParams
+    Nrx  = systemParams.Nrx;    % Number of receive systemParams
+    Nsub = ofdm.Nsub;       % Total number of subcarriers
 
     % Indices of the non-null preamble subcarriers at the first transmit antenna
-    idxs = [(ofdm.numGuardBandCarriers(1)+1):Ntx:(Nsub/2-Ntx+1), ...
-            (Nsub/2+2):Ntx:(Nsub-ofdm.numGuardBandCarriers(2)-Ntx+1)]';
+    idxs = [(ofdm.numGuardBandCarriers(1)+1):Ntx:(Nsub/2 - Ntx + 1), ...
+            (Nsub/2 + 2):Ntx:(Nsub - ofdm.numGuardBandCarriers(2) - Ntx + 1)]';
     numPreambleSubcarriers = numel(idxs);
 
     % Shift subcarrier indices by one at each subsequent transmit antenna
     preambleIdxs = zeros(numPreambleSubcarriers, 1, Ntx);
     for i = 1:Ntx
-        preambleIdxs(:, 1, i) = idxs + (i-1);
+        preambleIdxs(:, 1, i) = idxs + (i - 1);
     end
 
     % Use a known sequence as a preamble.
-    % The same values are transmitted by all of the transmit antennas.
+    % The same values are transmitted by all of the transmit systemParams.
     preamble = mlseq(Nsub - 1);
     preamble = preamble(1 : numPreambleSubcarriers);
     preamble = repmat(preamble, 1, 1, Ntx);
 
     % Create OFDM modulator for preamble
-    preambleMod = comm.OFDMModulator('CyclicPrefixLength', ofdm.cyclicPrefixLength, ...
+    preambleMod = comm.OFDMModulator( ...
+        'CyclicPrefixLength', ofdm.cyclicPrefixLength, ...
         'FFTLength', Nsub, ...
         'NumGuardBandCarriers', ofdm.numGuardBandCarriers, ...
         'NumSymbols', 1, ...
@@ -36,7 +47,7 @@ function [channelMatrix, precoding] = initialChannelEstimation(systemParams, tra
     preambleDemod = comm.OFDMDemodulator(preambleMod);
     preambleDemod.NumReceiveAntennas = Nrx;
 
-    % When channel sounding is performed, almost all sub carries are used for
+    % When channel sounding is performed, almost all subcarriers are used for
     % the preamble. Null the remaining subcarriers.
     preambleSignal = preambleMod(zeros(info(preambleMod).DataInputSize), preamble);
 
@@ -45,9 +56,9 @@ function [channelMatrix, precoding] = initialChannelEstimation(systemParams, tra
 
     % Apply scattering MIMO channel propagation effects
     channelSignal = channel(txSignal, ...
-        [scenario.scatterPos scenario.targetPositions], ...
-        [zeros(size(scenario.scatterPos)) scenario.targetVelocities], ...
-        [scenario.scatterRC scenario.targetRC]);
+        [scenario.scatterPos, scenario.targetPositions], ...
+        [zeros(size(scenario.scatterPos)), scenario.targetVelocities], ...
+        [scenario.scatterRC, scenario.targetRC]);
 
     % Add thermal noise at the receiver
     rxSignal = receiver(channelSignal);
@@ -62,7 +73,12 @@ function [channelMatrix, precoding] = initialChannelEstimation(systemParams, tra
     % Compute precoding and combining weights
     [Wp, Wc, ~, G] = diagbfweights(channelMatrix);
 
+    precoding = struct();
     precoding.Wp = Wp;
     precoding.Wc = Wc;
-    precoding.G = G;
+    precoding.G  = G;
+
+    % Append precoding and channel matrix to config
+    config.channelMatrix = channelMatrix;
+    config.precoding = precoding;
 end
