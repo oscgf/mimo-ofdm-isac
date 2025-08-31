@@ -4,7 +4,7 @@
 clear; clc; close all;
 
 %% Configuration
-params = 'config_0.csv'; % Default configuration file name
+params = 'config_antennas.csv'; % Default configuration file name
 
 % Show or save figures
 SHOW_IMAGES = false;  % Set to false to suppress figure display
