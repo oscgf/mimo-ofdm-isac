@@ -21,8 +21,8 @@ receiver = phased.Receiver('SampleRate', sampleRate, 'NoiseFigure', noiseFigure,
     'InputNoiseTemperature', referenceTemperature, 'Gain', 0);
 
 % Antenna Parameters (ULA)
-Ntx = 2;                                            % Number of Tx antenna elements
-Nrx = 2;                                            % Number of Rx antenna elements
+Ntx = 8;                                            % Number of Tx antenna elements
+Nrx = 8;                                            % Number of Rx antenna elements
 
 element = phased.IsotropicAntennaElement('BackBaffled', true);  % Isotropic antenna element
 txArray = phased.ULA(Ntx, waveLength/2, 'Element', element);    % Transmit uniform linear array
@@ -195,7 +195,7 @@ Nframe = 6;                                                            % Total n
 fprintf("Velocity resolution: %.2f (m/s).\n", dop2speed(1/(Nframe*Tofdm*Mt), waveLength));
 bitsPerSymbol = 6;                                                      % Bits per QAM symbol (and OFDM data subcarrier)
 modOrder = 2^bitsPerSymbol;                                            % Modulation order
-numDataStreams = 2;                                                    % Number of data streams
+numDataStreams = 4;                                                    % Number of data streams
 
 % Input data size for subframe A
 subframeAInputSize = [subframeAInfo.DataInputSize(1) subframeAInfo.DataInputSize(2) numDataStreams];
