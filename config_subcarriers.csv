@@ -1,0 +1,4 @@
+ID,Description,figSaveFolder,figPrefix,NumSubcarriers
+1,Moderate resolution (128 subcarriers),128,128
+2,High resolution (512 subcarriers),512,512
+3,Ultra high resolution (4096 subcarriers),4096,4096
