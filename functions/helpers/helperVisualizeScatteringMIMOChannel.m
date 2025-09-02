@@ -1,6 +1,7 @@
 function helperVisualizeScatteringMIMOChannel(scatteringMIMOChannel, scattererPositions, targetPositions, targetVelocities)
-    figure;
-    hold on;
+    hFig = figure;
+    set(hFig, 'Units', 'pixels', 'Position', [100 100 800 600]); % [x y width height]
+    set(hFig, 'PaperPositionMode', 'auto'); % ensures save uses same size    hold on;
 
     ax = gca;
     colors = ax.ColorOrder;
