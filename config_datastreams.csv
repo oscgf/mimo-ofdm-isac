@@ -1,0 +1,4 @@
+ID,Description,figSaveFolder,figPrefix,numDataStreams,TxAntennas,RxAntennas
+1,base,datastreams,ds2,2,16,16
+2,high,datastreams,ds4,4,16,16
+3,ultra,datastreams,ds8,8,16,16

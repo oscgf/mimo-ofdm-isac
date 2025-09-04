@@ -4,11 +4,11 @@
 clear; clc; close all;
 
 %% Configuration
-params = 'config_0.csv'; % Default configuration file name
+params = 'config_datastreams.csv'; % Default configuration file name
 
 % Show or save figures
-SHOW_IMAGES = false;  % Set to false to suppress figure display
-SAVE_IMAGES = false;  % Set to false to skip saving figures
+SHOW_IMAGES = true;  % Set to false to suppress figure display
+SAVE_IMAGES = true;  % Set to false to skip saving figures
 
 % Check if configuration file exists
 if ~isfile(params)
