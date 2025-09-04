@@ -21,8 +21,8 @@ function config = configureScenario(config)
     scenario.maxVelocity = 50;               % Maximum target velocity (m/s)
 
     % Target positions and velocities
-    scenario.targetPositions = [60 70 90 110 80 60; -25 15 30 -70 0 -30; 0 0 0 0 0 0];          % Target positions (m)
-    scenario.targetVelocities = [-15 20 0 0 15 -15; 12 -10 25 20 -50 12; 0 0 0 0 0 0];         % Target velocities (m/s)
+    scenario.targetPositions = [60 70 90; -25 15 30; 0 0 0];          % Target positions (m)
+    scenario.targetVelocities = [-15 20 0; 12 -10 25; 0 0 0];         % Target velocities (m/s)
 
     % Platform to model target motion
     scenario.targetMotion = phased.Platform( ...
