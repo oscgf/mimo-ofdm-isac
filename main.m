@@ -4,7 +4,7 @@
 clear; clc; close all;
 
 %% Configuration
-params = 'config.csv'; % Default configuration file name
+params = 'config_scs.csv'; % Default configuration file name
 
 % Show or save figures
 SHOW_IMAGES = true;  % Set to false to suppress figure display
