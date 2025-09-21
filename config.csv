@@ -1,2 +1,2 @@
 ID,Description,figSaveFolder,figPrefix,TxAntennas,RxAntennas,NumSubcarriers,peakPower_W,noiseFigure_dB,referenceTemperature_K,Bandwidth_MHz,CarrierFreq_GHz,Nframe,bitsPerSymbol,numDataStreams
-1,No modifications,original,original_,8,8,2048,1,3,290,100,6,24,6,2
+1,No modifications,original,original_,8,8,2048,1,3,290,100,6,24,2,2
