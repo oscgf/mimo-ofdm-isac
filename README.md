@@ -1,6 +1,6 @@
 # MIMO OFDM ISAC Simulation
 
-This repository contains MATLAB code for simulating a MIMO-OFDM Integrated Sensing and Communication (ISAC) system. The simulation creates and evaluates data and radar-like sensing results for different system configurations.
+This repository contains MATLAB code for simulating a MIMO-OFDM Integrated Sensing and Communication (ISAC) system. The simulation creates and evaluates data and radar-like sensing results for different system configurations. The code was taken from a [Matlab example](https://es.mathworks.com/help/phased/ug/integrated-sensing-and-communication-2-communication-centric-approach-using-mimo-ofdm.html), and has been refactored and extended with features such as CSV-based configuration for antennas and scenarios, modular task scripts, support for multiple system variations (antennas, subcarriers, SCS, datastreams), and automated result output grouping.
 
 ## Contents
 
@@ -17,8 +17,7 @@ This repository contains MATLAB code for simulating a MIMO-OFDM Integrated Sensi
 - MATLAB (recommended R2024a or newer).
 - Recommended MATLAB toolboxes (depending on which parts you use):
   - Communications Toolbox
-  - Signal Processing Toolbox
-  - Phased Array System Toolbox (optional, for advanced antenna/array features)
+  - Phased Array System Toolbox
 
 If you don't have the exact toolboxes, the core scripts may still run but some functions might be unavailable. Edit the code or remove toolbox-specific calls if necessary.
 
@@ -48,8 +47,3 @@ Edit CSV files under `configs/` to change scenarios and parameter sets. The scri
 ## Outputs
 
 Simulation outputs (plots and plain text results) are written into the `results/` directory. Subfolders are organized by configuration type (e.g., `antennas/`, `datastreams/`, `scs/`, `default/`).
-
-## Notes and assumptions
-
-- This README assumes a MATLAB-centric workflow. If you prefer to run the code in another environment (Octave), some MATLAB-specific functions may need adjustment.
-- I assumed MATLAB R2024a+ and the toolboxes listed above; if you want, I can detect required toolboxes by scanning the code and list exact toolbox dependencies.
