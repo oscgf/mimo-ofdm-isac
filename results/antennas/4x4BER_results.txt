@@ -1,29 +1,29 @@
 ISAC Simulation BER Results
 ===========================
 Per-frame BER:
-Frame  1: 0.018346
-Frame  2: 0.027369
-Frame  3: 0.025804
-Frame  4: 0.026598
-Frame  5: 0.025825
-Frame  6: 0.027846
-Frame  7: 0.028462
-Frame  8: 0.025669
-Frame  9: 0.021756
-Frame 10: 0.025097
-Frame 11: 0.027597
-Frame 12: 0.028640
-Frame 13: 0.024546
-Frame 14: 0.023674
-Frame 15: 0.023703
-Frame 16: 0.028078
-Frame 17: 0.025375
-Frame 18: 0.025164
-Frame 19: 0.025318
-Frame 20: 0.028536
-Frame 21: 0.025166
-Frame 22: 0.022356
-Frame 23: 0.023986
-Frame 24: 0.029256
+Frame  1: 0.018564
+Frame  2: 0.029858
+Frame  3: 0.024945
+Frame  4: 0.027715
+Frame  5: 0.026290
+Frame  6: 0.027462
+Frame  7: 0.027738
+Frame  8: 0.027348
+Frame  9: 0.022654
+Frame 10: 0.025358
+Frame 11: 0.027835
+Frame 12: 0.028739
+Frame 13: 0.025595
+Frame 14: 0.023564
+Frame 15: 0.025549
+Frame 16: 0.028469
+Frame 17: 0.025631
+Frame 18: 0.026266
+Frame 19: 0.024888
+Frame 20: 0.029558
+Frame 21: 0.025492
+Frame 22: 0.022622
+Frame 23: 0.022470
+Frame 24: 0.028393
 
-Mean BER: 0.025590
+Mean BER: 0.025959

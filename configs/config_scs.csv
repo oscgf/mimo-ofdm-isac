@@ -1,0 +1,7 @@
+ID,Description,figSaveFolder,figPrefix,Bandwidth_MHz,CarrierFreq_GHz
+1,SCS_60kHz,scs,scs60_6_,125,6
+2,SCS_120kHz,scs,scs120_6_,250,6
+3,SCS_480kHz,scs,scs480_6_,1000,6
+5,SCS_60kHz,scs,scs60_12_,125,12
+6,SCS_120kHz,scs,scs120_12_,250,12
+7,SCS_480kHz,scs,scs480_12_,1000,12

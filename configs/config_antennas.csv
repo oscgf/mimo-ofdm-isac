@@ -1,0 +1,6 @@
+ID,Description,figSaveFolder,figPrefix,TxAntennas,RxAntennas
+1,Compact 4x4 MIMO,antennas,4x4,4,4
+2,Asymmetric 8x4 MIMO,antennas,8x4,8,4
+3,Balanced 8x8 MIMO,antennas,8x8,8,8
+4,High-capacity 16x16 MIMO,antennas,16x16,16,16
+5,Ultra high-capacity 20x20 MIMO,antennas,20x20,20,20

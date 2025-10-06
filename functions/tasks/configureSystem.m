@@ -84,7 +84,7 @@ function config = configureSystem(params)
     options.SHOW_IMAGES = isfield(params, 'SHOW_IMAGES') && params.SHOW_IMAGES;
     options.SAVE_IMAGES = isfield(params, 'SAVE_IMAGES') && params.SAVE_IMAGES;
 
-    options.figSaveFolder = fullfile('results/figures', params.figSaveFolder);
+    options.figSaveFolder = fullfile('results', params.figSaveFolder);
     options.figPrefix = params.figPrefix;
 
     % Create the folder if it does not exist
